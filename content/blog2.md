@@ -7,11 +7,13 @@ This is my seond blog post
 
 ```python
 import pandas as pd
+from IPython.core.display import HTML
+import chart
 df = pd.DataFrame([['Ryan', 'https://duryan00.github.io/blog/'],
                  ['Hock' , 'https://teckhockng.github.io/blog/'],
                    ['Benoit', 'https://bolive84.github.io/Blog/'],
                  ['Anika','https://nawarani.github.io/blog/'],
-                  ['Kavitha','https://kavitha-shashidharan.github.io/blog/']], columns = ['name', 'link'])
+                  ['Kavitha','https://kavitha-shashidharan.github.io/blog/']], columns = ['Name', 'Blog_link'])
 df
 ```
 
@@ -36,8 +38,8 @@ df
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>name</th>
-      <th>link</th>
+      <th>Name</th>
+      <th>Blog_link</th>
     </tr>
   </thead>
   <tbody>
