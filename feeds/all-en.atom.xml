@@ -84,6 +84,4 @@ MSE can be termed as the mean of square of error (difference between actual valu
 
 &lt;p&gt;&lt;img alt="png" src="output_23_0.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src='images/blog1_plot.png' width="600"&gt;&lt;/p&gt;
-&lt;p&gt;It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry></feed>
+&lt;p&gt;It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression&lt;/p&gt;</content><category term="python"></category></entry></feed>
