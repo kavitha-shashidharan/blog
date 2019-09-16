@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Huber Regressor</title>
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+ <div class="container">
+  <h1><a href="https://kavitha-shashidharan.github.io/blog">blog</a></h1>
+ </div>
+</head>
+<body>
+ <div class="container">
+<div class="row">
+ <div class="col-md-8">
+  <h3>Huber Regressor</h3>
+  <label>2019-09-16</label>
+  <h1>Motivation towards Huber Regressor</h1>
+<p>One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of 10 different cars manufactured by a renowned manufacturer {10.1, 10.2, 9.9, 10.1, 10.3, 10.2, 10.1, 10, 10.2, 17}. If this dataset was my training data set, the presence of value 17 will certainly impact my prediction in a dramatic manner there by making my model unreliable. This is statistically termed as Outlier. If we had an option to ignore outliers from the training dataset, it would make the model more reliable. Would we always have an option to ignore parts of our dataset due to the presence of Outliers? The answer would certainly be NO, especially when the sample size is small.</p>
+<p>This problem is addressed by a variation of OLS regression called Robust Regression. This post focuses on Hubor Regression.</p>
+<p>The Huber loss is a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss.</p>
+<p>Robust regression is a form of regression analysis designed to overcome some limitations of traditional parametric and non-parametric methods.
+Regression analysis seeks to find the relationship between one or more independent variables and a dependent variable.
+It is used when the dataset has multiple outliers.</p>
+<h1>Loss Function</h1>
+<p>Loss Function
+Let’s start with discussing about Loss Function. Loss Function determines the difference between the actual value and predicted value for a given independent variable. Two loss functions to be considered in this context are Mean Square Error (MSE, also called as L2 Loss Function) and Mean Absolute Error (MAE, also called as L1 Loss function)
+MSE can be termed as the mean of square of error (difference between actual value and predicted value) and can be represented by the below equation:</p>
+<p><img alt="image.png" src="attachment:image.png"></p>
+<p><strong>MSE</strong> can be termed as the <strong>mean of absolute of error</strong> (difference between actual value and predicted value) and can be represented by the below equation:</p>
+<p><img alt="image.png" src="attachment:image.png"></p>
+<p>Let’s dig deeper with an example to understand the impact of outliers on these two loss functions. Let’s take a random set of values to a dataset</p>
+<p><img alt="image.png" src="attachment:image.png"></p>
+<p>Based on the details provided above, we can calculate L1 Loss Function to be 1 and L2 Loss Function to be 1.5. Let’s add an outlier to this dataset and assess the impact of it on both the Loss Functions. Let’s take a revised random set of dataset</p>
+<p><img alt="image.png" src="attachment:image.png"></p>
+<p>Based on the details provided above, we can calculate L1 Loss Function to be 3.8 and L2 Loss Function to be 46.2.</p>
+<p>It is clear that the outlier impacted both the Loss Function, but the impact is more on L2 than on L1 Loss Function. We can imply that L1 Loss Function is less sensitive to outliers than L2 Loss Function. Can we conclude that L1 Loss Function is best suited when outliers are present? Can we conclude that L2 Loss Function is best suited when outliers are not present?</p>
+<h1>Huber Loss Function</h1>
+<p>L1 loss is more robust to outliers, but its derivatives are not continuous, making it inefficient to find the solution. L2 loss is sensitive to outliers, but gives a more stable and closed form solution (by setting its derivative to 0).</p>
+<p>Hubor Loss Function combines the best of both L1 and L2 Loss Function. It uses a hyperdelta (𝛿) parameter to determine whether to use L1 or L2 Loss Function. If 𝛿 is less than absolute value of error then use L2 else use L1 Loss Function. This is represented mathematically as described in this post</p>
+<p><img alt="image.png" src="attachment:image.png"></p>
+<p>The value of 𝛿 is crucial in this function. It should be noted that this value should be identified iteratively.</p>
+<h2>Implementation</h2>
+<p>Let's put the above concept in to practice. As in many cases, python libraries are available which does the heavy lifting. Begin with importing relevant libraries</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">HuberRegressor</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+</pre></div>
+
+
+<p>Below code snippet plots the data, Huber Regression and Linear Rigression for comparison. Note, how different epsilon values are resulting in different Huber Regression Plots</p>
+<div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+                       <span class="n">bias</span><span class="o">=</span><span class="mf">100.0</span><span class="p">)</span>
+
+<span class="c1"># Add four strong outliers to the dataset.</span>
+<span class="n">X_outliers</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y_outliers</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">X_outliers</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4.</span>
+<span class="n">X_outliers</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4.</span>
+<span class="n">y_outliers</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4.</span>
+<span class="n">y_outliers</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="mf">4.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X_outliers</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y</span><span class="p">,</span> <span class="n">y_outliers</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the huber regressor over a series of epsilon values.</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="s1">&#39;y-&#39;</span><span class="p">,</span> <span class="s1">&#39;m-&#39;</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">epsilon_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.35</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">epsilon</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">epsilon_values</span><span class="p">):</span>
+    <span class="n">huber</span> <span class="o">=</span> <span class="n">HuberRegressor</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                           <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+    <span class="n">huber</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">coef</span> <span class="o">=</span> <span class="p">(</span><span class="n">huber</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">huber</span><span class="o">.</span><span class="n">intercept_</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">coef</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;huber loss, epsilon=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">epsilon</span><span class="p">)</span>
+
+<span class="c1"># Fit a Linear regressor to compare it to huber regressor.</span>
+<span class="n">linear</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">linear</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">coef_ridge</span> <span class="o">=</span> <span class="n">linear</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">coef</span> <span class="o">=</span> <span class="n">linear</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">linear</span><span class="o">.</span><span class="n">intercept_</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">coef</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear Regression&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of HuberRegressor vs Linear&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="png" src="output_24_0.png"></p>
+<p>It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression</p>
+<div class="highlight"><pre><span></span>
+</pre></div>
+ </div>
+</div>
+ </div>
+</body>
+</html>

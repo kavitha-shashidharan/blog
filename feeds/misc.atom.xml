@@ -1,81 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - misc</title><link href="https://kavitha-shashidharan.github.io/blog/" rel="alternate"></link><link href="https://kavitha-shashidharan.github.io/blog/feeds/misc.atom.xml" rel="self"></link><id>https://kavitha-shashidharan.github.io/blog/</id><updated>2019-09-12T11:30:00-04:00</updated><entry><title>My second Blog</title><link href="https://kavitha-shashidharan.github.io/blog/blog2.html" rel="alternate"></link><published>2019-09-12T11:30:00-04:00</published><updated>2019-09-12T11:30:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-09-12:/blog/blog2.html</id><summary type="html">&lt;p&gt;This is my seond blog post&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chart&lt;/span&gt;
-&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ryan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://duryan00.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hock&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://teckhockng.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Benoit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://bolive84.github.io/Blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Anika&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://nawarani.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Kavitha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://kavitha-shashidharan.github.io …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;This is my seond blog post&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.core.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HTML&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;chart&lt;/span&gt;
-&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;([[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Ryan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://duryan00.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hock&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://teckhockng.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Benoit&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://bolive84.github.io/Blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Anika&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://nawarani.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-                  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Kavitha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://kavitha-shashidharan.github.io/blog/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="n"&gt;columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Blog_link&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;span class="n"&gt;df&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - misc</title><link href="https://kavitha-shashidharan.github.io/blog/" rel="alternate"></link><link href="https://kavitha-shashidharan.github.io/blog/feeds/misc.atom.xml" rel="self"></link><id>https://kavitha-shashidharan.github.io/blog/</id><updated>2019-09-16T06:55:00-04:00</updated><entry><title>Huber Regressor</title><link href="https://kavitha-shashidharan.github.io/blog/blog_huber.html" rel="alternate"></link><published>2019-09-16T06:55:00-04:00</published><updated>2019-09-16T06:55:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-09-16:/blog/blog_huber.html</id><summary type="html">&lt;h1&gt;Motivation towards Huber Regressor&lt;/h1&gt;
+&lt;p&gt;One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Motivation towards Huber Regressor&lt;/h1&gt;
+&lt;p&gt;One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of 10 different cars manufactured by a renowned manufacturer {10.1, 10.2, 9.9, 10.1, 10.3, 10.2, 10.1, 10, 10.2, 17}. If this dataset was my training data set, the presence of value 17 will certainly impact my prediction in a dramatic manner there by making my model unreliable. This is statistically termed as Outlier. If we had an option to ignore outliers from the training dataset, it would make the model more reliable. Would we always have an option to ignore parts of our dataset due to the presence of Outliers? The answer would certainly be NO, especially when the sample size is small.&lt;/p&gt;
+&lt;p&gt;This problem is addressed by a variation of OLS regression called Robust Regression. This post focuses on Hubor Regression.&lt;/p&gt;
+&lt;p&gt;The Huber loss is a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss.&lt;/p&gt;
+&lt;p&gt;Robust regression is a form of regression analysis designed to overcome some limitations of traditional parametric and non-parametric methods.
+Regression analysis seeks to find the relationship between one or more independent variables and a dependent variable.
+It is used when the dataset has multiple outliers.&lt;/p&gt;
+&lt;h1&gt;Loss Function&lt;/h1&gt;
+&lt;p&gt;Loss Function
+Let’s start with discussing about Loss Function. Loss Function determines the difference between the actual value and predicted value for a given independent variable. Two loss functions to be considered in this context are Mean Square Error (MSE, also called as L2 Loss Function) and Mean Absolute Error (MAE, also called as L1 Loss function)
+MSE can be termed as the mean of square of error (difference between actual value and predicted value) and can be represented by the below equation:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image.png" src="attachment:image.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MSE&lt;/strong&gt; can be termed as the &lt;strong&gt;mean of absolute of error&lt;/strong&gt; (difference between actual value and predicted value) and can be represented by the below equation:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image.png" src="attachment:image.png"&gt;&lt;/p&gt;
+&lt;p&gt;Let’s dig deeper with an example to understand the impact of outliers on these two loss functions. Let’s take a random set of values to a dataset&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image.png" src="attachment:image.png"&gt;&lt;/p&gt;
+&lt;p&gt;Based on the details provided above, we can calculate L1 Loss Function to be 1 and L2 Loss Function to be 1.5. Let’s add an outlier to this dataset and assess the impact of it on both the Loss Functions. Let’s take a revised random set of dataset&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image.png" src="attachment:image.png"&gt;&lt;/p&gt;
+&lt;p&gt;Based on the details provided above, we can calculate L1 Loss Function to be 3.8 and L2 Loss Function to be 46.2.&lt;/p&gt;
+&lt;p&gt;It is clear that the outlier impacted both the Loss Function, but the impact is more on L2 than on L1 Loss Function. We can imply that L1 Loss Function is less sensitive to outliers than L2 Loss Function. Can we conclude that L1 Loss Function is best suited when outliers are present? Can we conclude that L2 Loss Function is best suited when outliers are not present?&lt;/p&gt;
+&lt;h1&gt;Huber Loss Function&lt;/h1&gt;
+&lt;p&gt;L1 loss is more robust to outliers, but its derivatives are not continuous, making it inefficient to find the solution. L2 loss is sensitive to outliers, but gives a more stable and closed form solution (by setting its derivative to 0).&lt;/p&gt;
+&lt;p&gt;Hubor Loss Function combines the best of both L1 and L2 Loss Function. It uses a hyperdelta (𝛿) parameter to determine whether to use L1 or L2 Loss Function. If 𝛿 is less than absolute value of error then use L2 else use L1 Loss Function. This is represented mathematically as described in this post&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image.png" src="attachment:image.png"&gt;&lt;/p&gt;
+&lt;p&gt;The value of 𝛿 is crucial in this function. It should be noted that this value should be identified iteratively.&lt;/p&gt;
+&lt;h2&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;Let's put the above concept in to practice. As in many cases, python libraries are available which does the heavy lifting. Begin with importing relevant libraries&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.model_selection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;train_test_split&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HuberRegressor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Ridge&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.datasets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;make_regression&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div&gt;
-&lt;style scoped&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+&lt;p&gt;Below code snippet plots the data, Huber Regression and Linear Rigression for comparison. Note, how different epsilon values are resulting in different Huber Regression Plots&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;rng&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RandomState&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_regression&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_samples&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_features&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noise&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;4.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                       &lt;span class="n"&gt;bias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;100.0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+&lt;span class="c1"&gt;# Add four strong outliers to the dataset.&lt;/span&gt;
+&lt;span class="n"&gt;X_outliers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;y_outliers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rng&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;X_outliers&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;4.&lt;/span&gt;
+&lt;span class="n"&gt;X_outliers&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:,&lt;/span&gt; &lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;4.&lt;/span&gt;
+&lt;span class="n"&gt;y_outliers&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;4.&lt;/span&gt;
+&lt;span class="n"&gt;y_outliers&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;4.&lt;/span&gt;
+&lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vstack&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;X_outliers&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concatenate&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y_outliers&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border="1" class="dataframe"&gt;
-  &lt;thead&gt;
-    &lt;tr style="text-align: right;"&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Blog_link&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;0&lt;/th&gt;
-      &lt;td&gt;Ryan&lt;/td&gt;
-      &lt;td&gt;https://duryan00.github.io/blog/&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;1&lt;/th&gt;
-      &lt;td&gt;Hock&lt;/td&gt;
-      &lt;td&gt;https://teckhockng.github.io/blog/&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;2&lt;/th&gt;
-      &lt;td&gt;Benoit&lt;/td&gt;
-      &lt;td&gt;https://bolive84.github.io/Blog/&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;3&lt;/th&gt;
-      &lt;td&gt;Anika&lt;/td&gt;
-      &lt;td&gt;https://nawarani.github.io/blog/&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;4&lt;/th&gt;
-      &lt;td&gt;Kavitha&lt;/td&gt;
-      &lt;td&gt;https://kavitha-shashidharan.github.io/blog/&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
+&lt;span class="c1"&gt;# Fit the huber regressor over a series of epsilon values.&lt;/span&gt;
+&lt;span class="n"&gt;colors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;r-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;y-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;m-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;p&gt;&lt;img src = https://cdn1.vectorstock.com/i/1000x1000/71/45/cartoon-yeti-presenting-isolated-vector-6527145.jpg&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;linspace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;epsilon_values&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;1.35&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.75&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;1.9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;epsilon&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;epsilon_values&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;huber&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HuberRegressor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fit_intercept&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_iter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                           &lt;span class="n"&gt;epsilon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;epsilon&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;huber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;coef&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;huber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;huber&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intercept_&lt;/span&gt;
+    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;coef&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;huber loss, epsilon=&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;epsilon&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Fit a Linear regressor to compare it to huber regressor.&lt;/span&gt;
+&lt;span class="n"&gt;linear&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fit_intercept&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;normalize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;linear&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;coef_ridge&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linear&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt;
+&lt;span class="n"&gt;coef&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;linear&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;linear&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intercept_&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;coef&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;g-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;label&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Linear Regression&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Comparison of HuberRegressor vs Linear&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;X&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;y&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;legend&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;img alt="png" src="output_24_0.png"&gt;&lt;/p&gt;
+&lt;p&gt;It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>First Blog Post!</title><link href="https://kavitha-shashidharan.github.io/blog/blog-1.html" rel="alternate"></link><published>2019-09-12T10:35:00-04:00</published><updated>2019-09-12T10:35:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-09-12:/blog/blog-1.html</id><summary type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Cursus vitae congue mauris rhoncus. Pulvinar neque laoreet suspendisse interdum. Eu nisl nunc mi ipsum faucibus vitae. Sapien faucibus et molestie …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa. Cursus vitae congue mauris rhoncus. Pulvinar neque laoreet suspendisse interdum. Eu nisl nunc mi ipsum faucibus vitae. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Nibh tortor id aliquet lectus proin nibh nisl. Sit amet venenatis urna cursus eget. Amet consectetur adipiscing elit duis. Quam pellentesque nec nam aliquam sem et tortor. Congue nisi vitae suscipit tellus.&lt;/p&gt;</content><category term="python"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category></entry></feed>
