@@ -25,19 +25,19 @@ It is used when the dataset has multiple outliers.</p>
 <p>Loss Function
 Let’s start with discussing about Loss Function. Loss Function determines the difference between the actual value and predicted value for a given independent variable. Two loss functions to be considered in this context are Mean Square Error (MSE, also called as L2 Loss Function) and Mean Absolute Error (MAE, also called as L1 Loss function)
 MSE can be termed as the mean of square of error (difference between actual value and predicted value) and can be represented by the below equation:</p>
-<p><img alt="image.png" src="attachment:image.png"></p>
+<p><img src='images/blog1_mse.png' width="600"></p>
 <p><strong>MSE</strong> can be termed as the <strong>mean of absolute of error</strong> (difference between actual value and predicted value) and can be represented by the below equation:</p>
-<p><img alt="image.png" src="attachment:image.png"></p>
+<p><img src='images/blog1_mae.png' width="600"></p>
 <p>Let’s dig deeper with an example to understand the impact of outliers on these two loss functions. Let’s take a random set of values to a dataset</p>
-<p><img alt="image.png" src="attachment:image.png"></p>
+<p><img src='images/blog1_table1.png' width="600"></p>
 <p>Based on the details provided above, we can calculate L1 Loss Function to be 1 and L2 Loss Function to be 1.5. Let’s add an outlier to this dataset and assess the impact of it on both the Loss Functions. Let’s take a revised random set of dataset</p>
-<p><img alt="image.png" src="attachment:image.png"></p>
+<p><img src='images/blog1_table2.png' width="600"></p>
 <p>Based on the details provided above, we can calculate L1 Loss Function to be 3.8 and L2 Loss Function to be 46.2.</p>
 <p>It is clear that the outlier impacted both the Loss Function, but the impact is more on L2 than on L1 Loss Function. We can imply that L1 Loss Function is less sensitive to outliers than L2 Loss Function. Can we conclude that L1 Loss Function is best suited when outliers are present? Can we conclude that L2 Loss Function is best suited when outliers are not present?</p>
 <h1>Huber Loss Function</h1>
 <p>L1 loss is more robust to outliers, but its derivatives are not continuous, making it inefficient to find the solution. L2 loss is sensitive to outliers, but gives a more stable and closed form solution (by setting its derivative to 0).</p>
 <p>Hubor Loss Function combines the best of both L1 and L2 Loss Function. It uses a hyperdelta (𝛿) parameter to determine whether to use L1 or L2 Loss Function. If 𝛿 is less than absolute value of error then use L2 else use L1 Loss Function. This is represented mathematically as described in this post</p>
-<p><img alt="image.png" src="attachment:image.png"></p>
+<p><img src='images/blog1_syntax.png' width="600"></p>
 <p>The value of 𝛿 is crucial in this function. It should be noted that this value should be identified iteratively.</p>
 <h2>Implementation</h2>
 <p>Let's put the above concept in to practice. As in many cases, python libraries are available which does the heavy lifting. Begin with importing relevant libraries</p>
@@ -96,7 +96,8 @@ MSE can be termed as the mean of square of error (difference between actual valu
 </pre></div>
 
 
-<p><img alt="png" src="output_24_0.png"></p>
+<p><img alt="png" src="output_23_0.png"></p>
+<p><img src='images/blog1_plot.png' width="600"></p>
 <p>It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression</p>
 <div class="highlight"><pre><span></span>
 </pre></div>
