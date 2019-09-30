@@ -38,7 +38,7 @@ Netflix gives recommendations by clustering its users together based on similari
 </pre></div>
 
 
-<p>Instatntiating the cluster.OPTICS model with all its default parameters. https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html provides all the details about the parameters used inside the model.</p>
+<p>Instatntiating the cluster.OPTICS model with default parameters.</p>
 <div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">OPTICS</span><span class="p">(</span><span class="n">cluster_method</span><span class="o">=</span><span class="s1">&#39;xi&#39;</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
