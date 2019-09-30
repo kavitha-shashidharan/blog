@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>cluster.OPTICS</title>
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+ <div class="container">
+  <h1><a href="https://kavitha-shashidharan.github.io/blog">blog</a></h1>
+ </div>
+</head>
+<body>
+ <div class="container">
+<div class="row">
+ <div class="col-md-8">
+  <h3>cluster.OPTICS</h3>
+  <label>2019-09-30</label>
+  <h1>Clustering using OPTICS - Unsupervised learning</h1>
+<h3>Density based clustering</h3>
+<p>Clustering is an unsupervised learning method that groups a set of given data points into well separated subsets. Unsupervised learning methods are used when there is no specific result we are trying to predict. Instead, we are clustering the data together based on the similarity of observations. To help clarify, let’s take Netflix as an example. Based on previous shows you have watched in the past, Netflix will recommend shows for you to watch next.
+Netflix gives recommendations by clustering its users together based on similarity of interests. This is exactly how unsupervised learning works. It simply clusters observations together based on similarity, and makes accurate conclusions based on the clusters.</p>
+<p>Density based clustering is a technique that allows to divide data in to groups with similarities. It dows not require to specify the number of groups. It divides the data based on density level(high &amp; low). The most popular density based clustering algorithm is <strong>DBSCAN</strong>. It has two must have parameters:
+1. <strong>Epsilon</strong> Maximum radius of a cluster
+2. <strong>Min_val</strong> Minimum number of data points a cluster can have</p>
+<p><img src='images/DBSCAN.png' width="500"></p>
+<p>Though DBSCAN works well in finding outliers and seperating density based datas, it can be used only when there is a drop in densities. It also struggles with high dimensionality data.And sometimes identifying the parameters becomes a difficult task. This is where OPTICS becomes very useful which works well with varying densities.</p>
+<h3>OPTICS &amp; its algorithm</h3>
+<p>OPTICS - <strong>Ordering Points to Identify Cluster Structure</strong> is relative to DBSCAN and requires very little parameter tuning. It requires the same <strong>epsilon</strong> and <strong>min_points</strong> as DBSCAN, but epsilon is theoritically unnecessary and is used only when there is a need to reduce the runtime complexity of an algorithm. It includes two additional concepts called <strong>core distance</strong> and <strong>reachability distance</strong>. All distances used inside OPTICS are calculated using the same <em>Euclidean distance</em> - which is used for the neighborhood calculations. An interesting property of density based clustering is that these algorithms do not assume clusters to have a particular shape. The parameter epsilon is, strictly speaking, not necessary. It can simply be set to the maximum possible value. When a spatial index is available, however, it does play a practical role with regards to complexity. OPTICS abstracts from DBSCAN by removing this parameter, at least to the extent of only having to give the maximum value. Ordering uses two concepts called "core distance" and "reachability distance".</p>
+<p><img src='images/OPTICS.png' width="500"></p>
+<p>Like DBSCAN, OPTICS also has a core object(a datapoint is considered to be a core object if within the radius(ϵ') it has the minimum data points).If you want to calculate <em>core distance</em> from any point <strong>p</strong>, it is the minimum value ϵ'(epsilon) which makes a distinct point a core point, such that meets the neighborhood of p has atleast the minimum number of points specified. So ϵ' is the minimum threshold that makes <strong>p</strong> a core object.</p>
+<p><em>Reachability Distance</em> - The Reachability distance between a point p and q2 is the maximum of the Core Distance of p and the Euclidean Distance(or some other distance metric) between p and q2. Note that The Reachability Distance is not defined if q2 is not a Core point. Here the reachability distance between p and q1 is nothing but the core distnace(ϵ'). The distance between p and q2 is the euclidean distance - this is beacuse the distance between p and q2 is gretaer than the core distance.</p>
+<h3>Sample code</h3>
+<p>Importing the libraries and getting the aggregation dataset.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">altair</span> <span class="kn">as</span> <span class="nn">alt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster.optics_</span> <span class="kn">import</span> <span class="n">OPTICS</span><span class="p">,</span> <span class="n">cluster_optics_dbscan</span>
+<span class="kn">import</span> <span class="nn">sklearn.cluster</span> <span class="kn">as</span> <span class="nn">cluster</span>
+<span class="n">agg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./datasets/aggregation.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Instatntiating the cluster.OPTICS model with all its default parameters. https://scikit-learn.org/stable/modules/generated/sklearn.cluster.OPTICS.html provides all the details about the parameters used inside the model.</p>
+<div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">OPTICS</span><span class="p">(</span><span class="n">cluster_method</span><span class="o">=</span><span class="s1">&#39;xi&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;label:N&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img src='images/visualization.png' width="400"></p>
+ </div>
+</div>
+ </div>
+</body>
+</html>
