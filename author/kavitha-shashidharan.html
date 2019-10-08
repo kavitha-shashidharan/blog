@@ -1,23 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <title>blog - Articles by Kavitha Shashidharan</title>
- <!-- Latest compiled and minified CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
- <div class="container">
-  <h1><a href="https://kavitha-shashidharan.github.io/blog">blog</a></h1>
- </div>
+        <meta charset="utf-8" />
+        <title>blog - Kavitha Shashidharan</title>
+        <link rel="stylesheet" href="https://kavitha-shashidharan.github.io/blog/theme/css/main.css" />
+        <link href="https://kavitha-shashidharan.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="blog Atom Feed" />
 </head>
-<body>
- <div class="container">
-<div class="row">
- <div class="col-md-8">
-   <h3><a href="https://kavitha-shashidharan.github.io/blog/blog_optics.html">OPTICS</a></h3>
-   <label>2019-09-30</label>
-   <h3><a href="https://kavitha-shashidharan.github.io/blog/blog_huber.html">Huber Regressor</a></h3>
-   <label>2019-09-16</label>
- </div>
-</div>
- </div>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://kavitha-shashidharan.github.io/blog/">blog </a></h1>
+                <nav><ul>
+                    <li><a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://kavitha-shashidharan.github.io/blog/blog_arviz.html">Bayesian model using ArviZ</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-10-08T16:12:00-04:00">
+                Published: Tue 08 October 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
+        </address>
+<p>In <a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a> </p>
+</footer><!-- /.post-info --><h1>Bayesian modelling using ArviZ</h1>
+<h3>Introduction to Bayesian Model</h3>
+<p>A <strong>Bayesian model</strong> is a statistical model which uses probability to represent the uncertainty within the model and also the uncertainty of the input and the output of a model. Bayesian methods can be a little difficult to use both mathematically and numerically.<br>
+When working with Bayesian models there are few tasks that need to be considered:
+To determine the quality of the inference.
+Evaluation model assumptions and model predictions.
+Comparison of models.
+Preparation of the results.</p>
+<p>The inference process derives the posterior probability — which is the most important in Bayesian statistics - with two other functions like prior probability and likelihood function. The correct visualization, analysis, and interpretation of these distributions is very important to answer the questions that improve the inference process. Bayesian inference computes the posterior probability according to Bayes' theorem:</p>
+<p><img src='images/blog3_formula.png' width="500"></p>
+<p>To make things easier let's focus on how to do Bayesian analysis and visualization using Probabilistic programming languages which implement functions to easily build Bayesian models together with efficient automatic inference methods. ArviZ is a Python package for exploratory analysis of Bayesian models. ArviZ aims to be a package that integrates seamlessly with established probabilistic programming languages like PyStan and PyMC. Where the aim of the probabilistic programming languages is to make it easy to build and solve Bayesian models, the aim of the ArviZ library is to make it easy to process and analyze the results from the Bayesian models. There are a couple data structures that are used within  the ArviZ  library.
+They are:</p>
+<ol>
+<li>xarray.Dataset</li>
+<li>arviz.InferenceData</li>
+<li>netCDF</li>
+</ol>
+<p><img src='images/blog3_infra.png' width="500"></p>
+<p>Above is a visual representation of the data structures and their relationships. Although seemingly more complex at a glance the ArviZ devs believe that the usage of xarray, InferenceData, and NetCDF will simplify the handling, referencing, and serialization of data generated during Bayesian analysis.Data from probabilistic programming is naturally high dimensional. Because of such complexity ArviZ must handle the data generated from multiple Bayesian Modeling libraries. This is an application that the xarray package handles quite well. The xarray package lets users manage high dimensional data with human readable dimensions and coordinates quite easily.</p>
+<p>PyMC3 is a Python library for probabilistic programming with a very simple and intuitive syntax. ArviZ, a Python library that works hand-in-hand with PyMC3 and can help us interpret and visualize posterior distributions.
+And we will apply Bayesian methods to a practical problem, to show an end-to-end Bayesian analysis that move from framing the question to building models to eliciting prior probabilities to implementing in Python the final posterior distribution.
+Before we start, let’s get some basic intuitions out of the way:
+Bayesian models are also known as probabilistic models because they are built using probabilities. And Bayesian’s use probabilities as a tool to quantify uncertainty. Therefore, the answers we get are distributions not point estimates.
+Bayesian Approach Steps
+1. Establish a belief about the data, including Prior and Likelihood functions.
+2. Use the data and probability, in accordance with our belief of the data, to update our model, check that our model agrees with the original data.
+3. Update our view of the data based on our model.</p>
+<h2>Using ArviZ library</h2>
+<p>I am using Spanish High Speed Rail tickets pricing data set and apply Bayesian methods to work on price optimization,</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">arviz</span> <span class="kn">as</span> <span class="nn">az</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pymc3</span> <span class="kn">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">theano</span> <span class="kn">import</span> <span class="n">shared</span>
+<span class="kn">from</span> <span class="nn">sklearn_pandas</span> <span class="kn">import</span> <span class="n">DataFrameMapper</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;renfe.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;unnamed: 0&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">99</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img src='images/blog3_df.png' width="800"></p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model_g</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">HalfNormal</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">trace_g</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">az</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">trace_g</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img src='images/blog3_chart1.png' width="700"></p>
+<ol>
+<li>On the left side, is the KDE plot, — it gives the probability of the y-axis for each value of the x-axis.</li>
+<li>On the right, is individual sampled values at each step during the sampling.</li>
+</ol>
+<h4>Plotting joint distribution</h4>
+<div class="highlight"><pre><span></span><span class="n">az</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">trace_g</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">,</span> <span class="n">fill_last</span><span class="o">=</span><span class="bp">False</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img src='images/blog3_chart2.png' width="500"></p>
+<p>There is no correlation seen between mu and sd.  The below summary and the result of bayesian inference can be visually seen by creating plot with the mean and Highest Posterior Density (HPD) of a distribution.</p>
+<div class="highlight"><pre><span></span><span class="n">az</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">trace_g</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img src='images/blog3_table.png' width="800"></p>
+<div class="highlight"><pre><span></span><span class="n">az</span><span class="o">.</span><span class="n">plot_posterior</span><span class="p">(</span><span class="n">trace_g</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img src='images/blog3_chart3.png' width="700"></p>
+<p>Bayesian inference, gives out the distribution for all the values. ArviZ uses 94% as the default value to get the distribution.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://kavitha-shashidharan.github.io/blog/blog_optics.html" rel="bookmark"
+                           title="Permalink to OPTICS">OPTICS</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-09-30T11:36:00-04:00">
+                Published: Mon 30 September 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
+        </address>
+<p>In <a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <h1>Clustering using OPTICS - Unsupervised learning</h1>
+<h3>Density based clustering</h3>
+<p>Clustering is an unsupervised learning method that groups a set of given data points into well separated subsets. Unsupervised learning methods are used when there is no specific result we are trying to predict. Instead, we are clustering the data together based …</p>
+                <a class="readmore" href="https://kavitha-shashidharan.github.io/blog/blog_optics.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://kavitha-shashidharan.github.io/blog/blog_huber.html" rel="bookmark"
+                           title="Permalink to Huber Regressor">Huber Regressor</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-09-16T06:55:00-04:00">
+                Published: Mon 16 September 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
+        </address>
+<p>In <a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <h1>Motivation towards Huber Regressor</h1>
+<p>One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of …</p>
+                <a class="readmore" href="https://kavitha-shashidharan.github.io/blog/blog_huber.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://kavitha-shashidharan.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
 </body>
 </html>

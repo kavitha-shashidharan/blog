@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - misc</title><link href="https://kavitha-shashidharan.github.io/blog/" rel="alternate"></link><link href="https://kavitha-shashidharan.github.io/blog/feeds/misc.atom.xml" rel="self"></link><id>https://kavitha-shashidharan.github.io/blog/</id><updated>2019-09-30T11:36:00-04:00</updated><entry><title>OPTICS</title><link href="https://kavitha-shashidharan.github.io/blog/blog_optics.html" rel="alternate"></link><published>2019-09-30T11:36:00-04:00</published><updated>2019-09-30T11:36:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-09-30:/blog/blog_optics.html</id><summary type="html">&lt;h1&gt;Clustering using OPTICS - Unsupervised learning&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - misc</title><link href="https://kavitha-shashidharan.github.io/blog/" rel="alternate"></link><link href="https://kavitha-shashidharan.github.io/blog/feeds/misc.atom.xml" rel="self"></link><id>https://kavitha-shashidharan.github.io/blog/</id><updated>2019-10-08T16:12:00-04:00</updated><entry><title>Bayesian model using ArviZ</title><link href="https://kavitha-shashidharan.github.io/blog/blog_arviz.html" rel="alternate"></link><published>2019-10-08T16:12:00-04:00</published><updated>2019-10-08T16:12:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-10-08:/blog/blog_arviz.html</id><summary type="html">&lt;h1&gt;Bayesian modelling using ArviZ&lt;/h1&gt;
+&lt;h3&gt;Introduction to Bayesian Model&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;Bayesian model&lt;/strong&gt; is a statistical model which uses probability to represent the uncertainty within the model and also the uncertainty of the input and the output of a model. Bayesian methods can be a little difficult to use both mathematically and …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Bayesian modelling using ArviZ&lt;/h1&gt;
+&lt;h3&gt;Introduction to Bayesian Model&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;Bayesian model&lt;/strong&gt; is a statistical model which uses probability to represent the uncertainty within the model and also the uncertainty of the input and the output of a model. Bayesian methods can be a little difficult to use both mathematically and numerically.&lt;br&gt;
+When working with Bayesian models there are few tasks that need to be considered:
+To determine the quality of the inference.
+Evaluation model assumptions and model predictions.
+Comparison of models.
+Preparation of the results.&lt;/p&gt;
+&lt;p&gt;The inference process derives the posterior probability — which is the most important in Bayesian statistics - with two other functions like prior probability and likelihood function. The correct visualization, analysis, and interpretation of these distributions is very important to answer the questions that improve the inference process. Bayesian inference computes the posterior probability according to Bayes' theorem:&lt;/p&gt;
+&lt;p&gt;&lt;img src='images/blog3_formula.png' width="500"&gt;&lt;/p&gt;
+&lt;p&gt;To make things easier let's focus on how to do Bayesian analysis and visualization using Probabilistic programming languages which implement functions to easily build Bayesian models together with efficient automatic inference methods. ArviZ is a Python package for exploratory analysis of Bayesian models. ArviZ aims to be a package that integrates seamlessly with established probabilistic programming languages like PyStan and PyMC. Where the aim of the probabilistic programming languages is to make it easy to build and solve Bayesian models, the aim of the ArviZ library is to make it easy to process and analyze the results from the Bayesian models. There are a couple data structures that are used within  the ArviZ  library.
+They are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;xarray.Dataset&lt;/li&gt;
+&lt;li&gt;arviz.InferenceData&lt;/li&gt;
+&lt;li&gt;netCDF&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src='images/blog3_infra.png' width="500"&gt;&lt;/p&gt;
+&lt;p&gt;Above is a visual representation of the data structures and their relationships. Although seemingly more complex at a glance the ArviZ devs believe that the usage of xarray, InferenceData, and NetCDF will simplify the handling, referencing, and serialization of data generated during Bayesian analysis.Data from probabilistic programming is naturally high dimensional. Because of such complexity ArviZ must handle the data generated from multiple Bayesian Modeling libraries. This is an application that the xarray package handles quite well. The xarray package lets users manage high dimensional data with human readable dimensions and coordinates quite easily.&lt;/p&gt;
+&lt;p&gt;PyMC3 is a Python library for probabilistic programming with a very simple and intuitive syntax. ArviZ, a Python library that works hand-in-hand with PyMC3 and can help us interpret and visualize posterior distributions.
+And we will apply Bayesian methods to a practical problem, to show an end-to-end Bayesian analysis that move from framing the question to building models to eliciting prior probabilities to implementing in Python the final posterior distribution.
+Before we start, let’s get some basic intuitions out of the way:
+Bayesian models are also known as probabilistic models because they are built using probabilities. And Bayesian’s use probabilities as a tool to quantify uncertainty. Therefore, the answers we get are distributions not point estimates.
+Bayesian Approach Steps
+1. Establish a belief about the data, including Prior and Likelihood functions.
+2. Use the data and probability, in accordance with our belief of the data, to update our model, check that our model agrees with the original data.
+3. Update our view of the data based on our model.&lt;/p&gt;
+&lt;h2&gt;Using ArviZ library&lt;/h2&gt;
+&lt;p&gt;I am using Spanish High Speed Rail tickets pricing data set and apply Bayesian methods to work on price optimization,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;arviz&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;az&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pymc3&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pm&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;theano&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;shared&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn_pandas&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DataFrameMapper&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;preprocessing&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.impute&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SimpleImputer&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;renfe.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;unnamed: 0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;inplace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;frac&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.01&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src='images/blog3_df.png' width="800"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;pm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;model_g&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Uniform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lower&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;300&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HalfNormal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Normal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mu&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;observed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;price&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;trace_g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tune&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;az&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot_trace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace_g&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src='images/blog3_chart1.png' width="700"&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;On the left side, is the KDE plot, — it gives the probability of the y-axis for each value of the x-axis.&lt;/li&gt;
+&lt;li&gt;On the right, is individual sampled values at each step during the sampling.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Plotting joint distribution&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;az&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot_joint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace_g&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kde&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fill_last&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src='images/blog3_chart2.png' width="500"&gt;&lt;/p&gt;
+&lt;p&gt;There is no correlation seen between mu and sd.  The below summary and the result of bayesian inference can be visually seen by creating plot with the mean and Highest Posterior Density (HPD) of a distribution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;az&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace_g&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src='images/blog3_table.png' width="800"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;az&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot_posterior&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;trace_g&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src='images/blog3_chart3.png' width="700"&gt;&lt;/p&gt;
+&lt;p&gt;Bayesian inference, gives out the distribution for all the values. ArviZ uses 94% as the default value to get the distribution.&lt;/p&gt;</content><category term="python"></category></entry><entry><title>OPTICS</title><link href="https://kavitha-shashidharan.github.io/blog/blog_optics.html" rel="alternate"></link><published>2019-09-30T11:36:00-04:00</published><updated>2019-09-30T11:36:00-04:00</updated><author><name>Kavitha Shashidharan</name></author><id>tag:kavitha-shashidharan.github.io,2019-09-30:/blog/blog_optics.html</id><summary type="html">&lt;h1&gt;Clustering using OPTICS - Unsupervised learning&lt;/h1&gt;
 &lt;h3&gt;Density based clustering&lt;/h3&gt;
 &lt;p&gt;Clustering is an unsupervised learning method that groups a set of given data points into well separated subsets. Unsupervised learning methods are used when there is no specific result we are trying to predict. Instead, we are clustering the data together based …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Clustering using OPTICS - Unsupervised learning&lt;/h1&gt;
 &lt;h3&gt;Density based clustering&lt;/h3&gt;

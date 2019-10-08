@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <title>Huber Regressor</title>
- <!-- Latest compiled and minified CSS -->
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
- <div class="container">
-  <h1><a href="https://kavitha-shashidharan.github.io/blog">blog</a></h1>
- </div>
+        <meta charset="utf-8" />
+        <title>Huber Regressor</title>
+        <link rel="stylesheet" href="https://kavitha-shashidharan.github.io/blog/theme/css/main.css" />
+        <link href="https://kavitha-shashidharan.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="blog Atom Feed" />
 </head>
-<body>
- <div class="container">
-<div class="row">
- <div class="col-md-8">
-  <h3>Huber Regressor</h3>
-  <label>2019-09-16</label>
-  <h1>Motivation towards Huber Regressor</h1>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://kavitha-shashidharan.github.io/blog/">blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://kavitha-shashidharan.github.io/blog/blog_huber.html" rel="bookmark"
+           title="Permalink to Huber Regressor">Huber Regressor</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-09-16T06:55:00-04:00">
+                Published: Mon 16 September 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
+        </address>
+<p>In <a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a>.</p>
+<p>tags: <a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->      <h1>Motivation towards Huber Regressor</h1>
 <p>One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of 10 different cars manufactured by a renowned manufacturer {10.1, 10.2, 9.9, 10.1, 10.3, 10.2, 10.1, 10, 10.2, 17}. If this dataset was my training data set, the presence of value 17 will certainly impact my prediction in a dramatic manner there by making my model unreliable. This is statistically termed as Outlier. If we had an option to ignore outliers from the training dataset, it would make the model more reliable. Would we always have an option to ignore parts of our dataset due to the presence of Outliers? The answer would certainly be NO, especially when the sample size is small.</p>
 <p>This problem is addressed by a variation of OLS regression called Robust Regression. This post focuses on Hubor Regression.</p>
 <p>The Huber loss is a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss.</p>
@@ -99,8 +118,27 @@ MSE can be termed as the mean of square of error (difference between actual valu
 <p><img alt="png" src="output_23_0.png"></p>
 <p><img src='images/blog1_plot.png' width="600"></p>
 <p>It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression</p>
- </div>
-</div>
- </div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://kavitha-shashidharan.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
 </body>
 </html>
