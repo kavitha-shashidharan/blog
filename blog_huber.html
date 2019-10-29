@@ -1,136 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-
-  <title>Huber Regressor</title>
-
-
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="referrer" content="origin" />
-  <meta name="generator" content="Pelican" />
-<link href="https://kavitha-shashidharan.github.io/blog/blog_huber.html" rel="canonical" />
-  <!-- Feed -->
+          <title>Kavitha's blog - Huber Regressor</title>
+        <meta charset="utf-8" />
         <link href="https://kavitha-shashidharan.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Kavitha's blog Full Atom Feed" />
-          <link href="https://kavitha-shashidharan.github.io/blog/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="Kavitha's blog Categories Atom Feed" />
-
-  <link href="https://kavitha-shashidharan.github.io/blog/theme/css/style.css" type="text/css" rel="stylesheet" />
-
-  <!-- Code highlight color scheme -->
-      <link href="https://kavitha-shashidharan.github.io/blog/theme/css/code_blocks/github.css" rel="stylesheet">
-
-
-  <!-- Custom fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-
-
-    <meta name="description" content="Motivation towards Huber Regressor One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear...">
-
-    <meta name="author" content="Kavitha Shashidharan">
-
-    <meta name="tags" content="python">
+        <link href="https://kavitha-shashidharan.github.io/blog/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="Kavitha's blog Categories Atom Feed" />
 
 
 
 
-<!-- Open Graph -->
-<meta property="og:site_name" content="Kavitha's blog"/>
-<meta property="og:title" content="Huber Regressor"/>
-<meta property="og:description" content="Motivation towards Huber Regressor One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear..."/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://kavitha-shashidharan.github.io/blog/blog_huber.html"/>
-<meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-09-16 06:55:00-04:00"/>
-<meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">
-<meta property="article:section" content="misc"/>
-<meta property="article:tag" content="python"/>
-<meta property="og:image" content="https://kavitha-shashidharan.github.io/blog/theme/images/post-bg.jpg">
+    <meta name="tags" content="python" />
 
-<!-- Twitter Card -->
-
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "name": "Huber Regressor",
-  "headline": "Huber Regressor",
-  "datePublished": "2019-09-16 06:55:00-04:00",
-  "dateModified": "",
-  "author": {
-    "@type": "Person",
-    "name": "Kavitha Shashidharan",
-    "url": "https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html"
-  },
-  "image": "https://kavitha-shashidharan.github.io/blog/theme/images/post-bg.jpg",
-  "url": "https://kavitha-shashidharan.github.io/blog/blog_huber.html",
-  "description": "Motivation towards Huber Regressor One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear..."
-}
-</script>
 </head>
-<!-- TODO : Body class -->
-<body class="home-template">
 
-<nav id="menu">
-  <a class="close-button">Close</a>
-  <div class="nav-wrapper">
-    <p class="nav-label">Menu</p>
-    <ul>
-
-
-    </ul>
-  </div>
-</nav>
-    <!-- Progressbar -->
-    <div class="progress-container">
-        <span class="progress-bar"></span>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://kavitha-shashidharan.github.io/blog/">Kavitha's blog <strong></strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li class="active"><a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://kavitha-shashidharan.github.io/blog/blog_huber.html" rel="bookmark"
+         title="Permalink to Huber Regressor">Huber Regressor</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2019-09-16T06:55:00-04:00">
+      Mon 16 September 2019
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://kavitha-shashidharan.github.io/blog/category/misc.html">misc</a>
     </div>
-
-    <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header id="post-header" >
-      <div class="inner">
-        <nav id="navigation">
-            <span id="home-button" class="nav-button">
-                <a class="home-button" href="https://kavitha-shashidharan.github.io/blog/" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
-            </span>
-          <span id="menu-button" class="nav-button">
-            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
-          </span>
-        </nav>
-        <h1 class="post-title">Huber Regressor</h1>
-        <!-- TODO : Proper class for headline -->
-        <span class="post-meta">
-                <a href="https://kavitha-shashidharan.github.io/blog/author/kavitha-shashidharan.html">Kavitha Shashidharan</a>
-            | <time datetime="Mon 16 September 2019">Mon 16 September 2019</time>
-        </span>
-        <!-- TODO : Modified check -->
-      </div>
-    </header>
-
-  <section id="wrapper">
-    <a class="hidden-close"></a>
-
-    <!-- Post content -->
-    <main class="content" role="main">
-        <article class="post">
-        <div class="inner">
-            <section class="post-content">
-                <h1>Motivation towards Huber Regressor</h1>
+    <div class="tags">
+        Tags:
+            <a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <h1>Motivation towards Huber Regressor</h1>
 <p>One of the first issue I had to deal with while working with Ordinary least Squares (OLS) Linear Regression was the impact which extreme values had on my model. To illustrate the nature of this problem, let me take a sample dataset consisting of mileage of 10 different cars manufactured by a renowned manufacturer {10.1, 10.2, 9.9, 10.1, 10.3, 10.2, 10.1, 10, 10.2, 17}. If this dataset was my training data set, the presence of value 17 will certainly impact my prediction in a dramatic manner there by making my model unreliable. This is statistically termed as Outlier. If we had an option to ignore outliers from the training dataset, it would make the model more reliable. Would we always have an option to ignore parts of our dataset due to the presence of Outliers? The answer would certainly be NO, especially when the sample size is small.</p>
 <p>This problem is addressed by a variation of OLS regression called Robust Regression. This post focuses on Hubor Regression.</p>
 <p>The Huber loss is a loss function used in robust regression, that is less sensitive to outliers in data than the squared error loss.</p>
@@ -215,55 +128,13 @@ MSE can be termed as the mean of square of error (difference between actual valu
 <p><img alt="png" src="output_23_0.png"></p>
 <p><img src='images/blog1_plot.png' width="600"></p>
 <p>It can be noted that the epsilon value is an important factor in determining the Hubor Regression and the optimum value can be acheived iteratively as illustrated. It is to be noted that when the epsilon value is set to 1.9, the Huber Regression is similar to Linear Regression</p>
-            </section>
-
-            <section class="post-info">
-                <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Huber Regressor&amp;url=https://kavitha-shashidharan.github.io/blog/blog_huber.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
-                    </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kavitha-shashidharan.github.io/blog/blog_huber.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
-                    </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=https://kavitha-shashidharan.github.io/blog/blog_huber.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
-                    </a>
-                    <div class="clear"></div>
-                </div>
-
-                <aside class="post-tags">
-<a href="https://kavitha-shashidharan.github.io/blog/tag/python.html">python</a>                </aside>
-
-                <div class="clear"></div>
-
-
-                </section>
-
-
-                <aside class="post-nav">
-                    <div class="clear"></div>
-                </aside>
-
-            </div>
-        </article>
-    </main>
-      <!-- TODO : Body class -->
-    <div id="body-class" style="display: none;" class=""></div>
-
-    <footer id="footer">
-      <div class="inner">
-        <section class="credits">
-
-
-          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
-          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
-        </section>
-      </div>
-    </footer>
-  </section>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://kavitha-shashidharan.github.io/blog/theme/js/script.js"></script>
-
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
 </body>
 </html>
